@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Head from "./components/Head";
+import Input from "./components/Input";
+import Style from "./styles";
+
+const max = 50;
+const randomNumber = Math.round(Math.random() * max);
 
 function App() {
+  const numberOfAttepmts = 3;
+  const [attepmts, setAttempts] = useState(3);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={Style.layout}>
+      <Head numberOfAttepmts={numberOfAttepmts} max={max} />
+      <Input
+        random={randomNumber}
+        numberOfAttepmts={numberOfAttepmts}
+        attepmts={attepmts}
+        setAttempts={setAttempts}
+        randomNumber={randomNumber}
+      />
     </div>
   );
 }
